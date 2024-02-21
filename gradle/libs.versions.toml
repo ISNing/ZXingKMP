@@ -1,5 +1,7 @@
 [versions]
-core = "3.4.1"
+zxing-jvm = "3.4.1"
+zxing-cpp-kn = "2.1.1"
+zxing-js = "0.20.0"
 jvm-capability-source = "VERSION_17"
 jvm-capability-target = "VERSION_17"
 kotlin-jvmTarget = "17"
@@ -12,7 +14,8 @@ compose-material3 = "1.1.2"
 androidx-activityCompose = "1.8.0"
 
 [libraries]
-zxing-core-jvm = { module = "com.google.zxing:core", version.ref = "core" }
+zxing-core-jvm = { module = "com.google.zxing:core", version.ref = "zxing-jvm" }
+zxing-cpp-kn = { module = "io.github.zxing-cpp:kotlin-native", version.ref = "zxing-cpp-kn" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
@@ -27,3 +30,4 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
