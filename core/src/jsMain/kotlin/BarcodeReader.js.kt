@@ -30,7 +30,7 @@ actual class BarcodeReader actual constructor(private val options: ReaderOptions
         }
 }
 
-actual class ReaderOptions {
+actual class ReaderOptions actual constructor() {
     actual var tryHarder: Boolean by Delegates.observable(false) { _, _, newValue ->
         if (newValue) hints[DecodeHintType.TRY_HARDER] = true
         else hints.remove(DecodeHintType.TRY_HARDER)

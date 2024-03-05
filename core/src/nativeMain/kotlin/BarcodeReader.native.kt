@@ -29,7 +29,7 @@ actual class BarcodeReader actual constructor(options: ReaderOptions) {
         raw.read(imageView.raw).map { it.toWrapped() }
 }
 
-actual class ReaderOptions {
+actual class ReaderOptions actual constructor() {
     val raw: RawReaderOptions = RawReaderOptions()
 
     actual var tryHarder: Boolean

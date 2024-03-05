@@ -16,7 +16,7 @@
 
 package cn.isning.zxingkmp
 
-expect class BarcodeReader(options: ReaderOptions) {
+expect class BarcodeReader(options: ReaderOptions = ReaderOptions()) {
     @Throws(BarcodeReadingException::class)
     fun read(imageView: ImageView): List<Barcode>
 }
@@ -24,7 +24,7 @@ expect class BarcodeReader(options: ReaderOptions) {
 class BarcodeReadingException(message: String?) : Exception("Failed to read barcodes: $message")
 
 
-expect class ReaderOptions {
+expect class ReaderOptions() {
     var tryHarder: Boolean
     var tryInvert: Boolean
     var isPure: Boolean
