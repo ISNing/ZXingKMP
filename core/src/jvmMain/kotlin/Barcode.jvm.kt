@@ -22,22 +22,19 @@ import com.google.zxing.ResultPoint
 
 actual class Barcode(private val raw: Result, private val eanAddOnSymbol: EanAddOnSymbol) {
     actual val isValid: Boolean = true
-    actual val format: BarcodeFormat
-        get() = raw.barcodeFormat.toWrapped()
+    actual val format: BarcodeFormat by lazy { raw.barcodeFormat.toWrapped() }
     actual val bytes: ByteArray?
         get() = raw.rawBytes
-    actual val text: String?
-        get() = when (eanAddOnSymbol) {
+    actual val text: String? by lazy { when (eanAddOnSymbol) {
             EanAddOnSymbol.Ignore -> raw.text
             EanAddOnSymbol.Read, EanAddOnSymbol.Require -> raw.resultMetadata[ResultMetadataType.UPC_EAN_EXTENSION]
                 ?.toString()?.let { "${raw.text}+$it" } ?: raw.text
-        }
+        } }
     actual val ecLevel: String?
         get() = raw.resultMetadata[ResultMetadataType.ERROR_CORRECTION_LEVEL]?.toString()
     actual val symbologyIdentifier: String?
         get() = raw.resultMetadata[ResultMetadataType.SYMBOLOGY_IDENTIFIER]?.toString()
-    actual val position: Position
-        get() = raw.resultPoints.toWrapped()
+    actual val position: Position by lazy { raw.resultPoints.toWrapped() }
     actual val orientation: Int
         get() = raw.resultMetadata[ResultMetadataType.ORIENTATION] as Int
 }
