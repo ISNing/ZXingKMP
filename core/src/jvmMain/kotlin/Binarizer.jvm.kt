@@ -91,6 +91,46 @@ actual object GlobalHistogramBinarizer :
 actual object HybridBinarizer : WrappedRawBinarizer({ source -> com.google.zxing.common.HybridBinarizer(source) }),
     Binarizer
 
+open class ThresholdBinarizer(threshold: Int) :
+    WrappedRawBinarizer({ source -> ThresholdRawBinarizer(source, threshold) }), Binarizer
+
+actual object BoolCastBinarizer : ThresholdBinarizer(1), Binarizer
+actual object FixedThresholdBinarizer : ThresholdBinarizer(127), Binarizer
+
+class ThresholdRawBinarizer(source: LuminanceSource, private val threshold: Int) : RawBinarizer(source) {
+    override fun getBlackRow(y: Int, row: BitArray?): BitArray {
+        val width = luminanceSource.width
+        val luminances = luminanceSource.getRow(y, null)
+        val res = row ?: BitArray(width)
+        for (x in 0 until width) {
+            val pixel = luminances[x]
+            if (pixel <= threshold) res.set(x)
+        }
+        return res
+    }
+
+    override fun getBlackMatrix(): BitMatrix {
+        val width = luminanceSource.width
+        val height = luminanceSource.height
+        val luminances = luminanceSource.matrix
+        val res = BitMatrix(width, height)
+        var yOffset = 0
+        for (y in 0 until height) {
+            yOffset = y * width
+            for (x in 0 until width) {
+                if (luminances[yOffset + x] <= threshold) {
+                    res.set(x, y)
+                }
+            }
+        }
+        return res
+    }
+
+    override fun createBinarizer(source: LuminanceSource): RawBinarizer {
+        return ThresholdRawBinarizer(source, threshold)
+    }
+}
+
 fun Binarizer.toZXingBinarizer(source: LuminanceSource): RawBinarizer = when (this) {
     is WrappedRawBinarizer -> factory(source)
     else -> DelegatedZXingBinarizer(this, source)

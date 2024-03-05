@@ -28,8 +28,8 @@ sealed class WrappedRawBinarizer(override val raw: RawBinarizer) : Binarizer
 actual object GlobalHistogramBinarizer : WrappedRawBinarizer(RawBinarizer.GlobalHistogram), Binarizer
 actual object HybridBinarizer : WrappedRawBinarizer(RawBinarizer.LocalAverage), Binarizer
 
-object BoolCastBinarizer : WrappedRawBinarizer(RawBinarizer.BoolCast), Binarizer
-object FixedThresholdBinarizer : WrappedRawBinarizer(RawBinarizer.FixedThreshold), Binarizer
+actual object BoolCastBinarizer : WrappedRawBinarizer(RawBinarizer.BoolCast), Binarizer
+actual object FixedThresholdBinarizer : WrappedRawBinarizer(RawBinarizer.FixedThreshold), Binarizer
 
 fun RawBinarizer.toWrapped(): Binarizer = when (this) {
     RawBinarizer.GlobalHistogram -> GlobalHistogramBinarizer

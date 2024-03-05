@@ -20,3 +20,5 @@ expect interface Binarizer
 
 expect object GlobalHistogramBinarizer : Binarizer
 expect object HybridBinarizer : Binarizer
+expect object BoolCastBinarizer : Binarizer
+expect object FixedThresholdBinarizer : Binarizer

@@ -20,7 +20,8 @@ import cn.isning.zxingkmp.jsinterop.zxing.library.BitArray
 import cn.isning.zxingkmp.jsinterop.zxing.library.BitMatrix
 import cn.isning.zxingkmp.jsinterop.zxing.library.LuminanceSource
 import cn.isning.zxingkmp.jsinterop.zxing.library.NotFoundException
-import cn.isning.zxingkmp.jsinterop.zxing.library.Binarizer as ZXingBinarizer
+import org.khronos.webgl.get
+import cn.isning.zxingkmp.jsinterop.zxing.library.Binarizer as RawBinarizer
 
 actual interface Binarizer {
     /**
@@ -63,17 +64,17 @@ actual interface Binarizer {
 }
 
 private class DelegatedZXingBinarizer(private val delegated: Binarizer, source: LuminanceSource) :
-    ZXingBinarizer(source) {
-    override fun getBlackRow(y: Number, row: BitArray): BitArray = delegated.getBlackRow(getLuminanceSource(), y, row)
+    RawBinarizer(source) {
+    override fun getBlackRow(y: Number, row: BitArray?): BitArray = delegated.getBlackRow(getLuminanceSource(), y, row)
 
     override fun getBlackMatrix(): BitMatrix = delegated.getBlackMatrix(getLuminanceSource())
 
-    override fun createBinarizer(source: LuminanceSource): ZXingBinarizer =
+    override fun createBinarizer(source: LuminanceSource): RawBinarizer =
         DelegatedZXingBinarizer(delegated.createBinarizer(), source)
 
 }
 
-sealed class WrappedRawBinarizer(val factory: (LuminanceSource) -> ZXingBinarizer) : Binarizer {
+sealed class WrappedRawBinarizer(val factory: (LuminanceSource) -> RawBinarizer) : Binarizer {
     override fun getBlackRow(source: LuminanceSource, y: Number, row: BitArray?): BitArray =
         error("Do not use this, this is just for storing raw binarizer factory")
 
@@ -91,7 +92,47 @@ actual object GlobalHistogramBinarizer :
 actual object HybridBinarizer :
     WrappedRawBinarizer({ source -> cn.isning.zxingkmp.jsinterop.zxing.library.HybridBinarizer(source) }), Binarizer
 
-fun Binarizer.toZXingBinarizer(source: LuminanceSource): ZXingBinarizer = when (this) {
+open class ThresholdBinarizer(threshold: Int) :
+    WrappedRawBinarizer({ source -> ThresholdRawBinarizer(source, threshold) }), Binarizer
+
+actual object BoolCastBinarizer : ThresholdBinarizer(1), Binarizer
+actual object FixedThresholdBinarizer : ThresholdBinarizer(127), Binarizer
+
+class ThresholdRawBinarizer(source: LuminanceSource, private val threshold: Int) : RawBinarizer(source) {
+    override fun getBlackRow(y: Number, row: BitArray?): BitArray {
+        val width = getLuminanceSource().width.toInt()
+        val luminances = getLuminanceSource().getRow(y, null)
+        val res = row ?: BitArray(width)
+        for (x in 0 until width) {
+            val pixel = luminances[x]
+            if (pixel <= threshold) res.set(x)
+        }
+        return res
+    }
+
+    override fun getBlackMatrix(): BitMatrix {
+        val width = getLuminanceSource().width.toInt()
+        val height = getLuminanceSource().height.toInt()
+        val luminances = getLuminanceSource().getMatrix()
+        val res = BitMatrix(width, height)
+        var yOffset = 0
+        for (y in 0 until height) {
+            yOffset = y * width
+            for (x in 0 until width) {
+                if (luminances[yOffset + x] <= threshold) {
+                    res.set(x, y)
+                }
+            }
+        }
+        return res
+    }
+
+    override fun createBinarizer(source: LuminanceSource): RawBinarizer {
+        return ThresholdRawBinarizer(source, threshold)
+    }
+}
+
+fun Binarizer.toZXingBinarizer(source: LuminanceSource): RawBinarizer = when (this) {
     is WrappedRawBinarizer -> factory(source)
     else -> DelegatedZXingBinarizer(this, source)
 }
