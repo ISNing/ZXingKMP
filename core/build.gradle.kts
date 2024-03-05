@@ -16,15 +16,27 @@ kotlin {
         }
     }
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            isStatic = true
-        }
-    }
+    androidNativeArm32()
+    androidNativeArm64()
+    androidNativeX86()
+    androidNativeX64()
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+    macosX64()
+    macosArm64()
+    watchosX64()
+    watchosArm32()
+    watchosArm64()
+    watchosSimulatorArm64()
+    tvosX64()
+    tvosArm64()
+    tvosSimulatorArm64()
+    linuxX64()
+    linuxArm64()
+    // TODO: Upstream is not ready for mingwX64 yet: https://github.com/ISNing/ZXingKMP/issues/10
+//    mingwX64()
+
     jvm {
         compilations.all {
             kotlinOptions {
