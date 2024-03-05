@@ -31,6 +31,7 @@ actual interface Binarizer {
      * and passed in with each call for performance. However it is legal to keep more than one row
      * at a time if needed.
      *
+     * @param source The LuminanceSource this Binarizer will operate on.
      * @param y The row to fetch, which must be in [0, bitmap height)
      * @param row An optional preallocated array. If null or too small, it will be ignored.
      * If used, the Binarizer will call BitArray.clear(). Always use the returned object.
@@ -46,6 +47,7 @@ actual interface Binarizer {
      * may not apply sharpening. Therefore, a row from this matrix may not be identical to one
      * fetched using getBlackRow(), so don't mix and match between them.
      *
+     * @param source The LuminanceSource this Binarizer will operate on.
      * @return The 2D array of bits for the image (true means black).
      * @throws NotFoundException if image can't be binarized to make a matrix
      */
@@ -57,7 +59,6 @@ actual interface Binarizer {
      * state. This is needed because Binarizer implementations may be stateful, e.g. keeping a cache
      * of 1 bit data. See Effective Java for why we can't use Java's clone() method.
      *
-     * @param source The LuminanceSource this Binarizer will operate on.
      * @return A new concrete Binarizer implementation object.
      */
     fun createBinarizer(): Binarizer
