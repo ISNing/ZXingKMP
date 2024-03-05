@@ -21,7 +21,8 @@ expect class BarcodeReader(options: ReaderOptions = ReaderOptions()) {
     fun read(imageView: ImageView): List<Barcode>
 }
 
-class BarcodeReadingException(message: String?) : Exception("Failed to read barcodes: $message")
+class BarcodeReadingException(message: String?, cause: Throwable? = null) :
+    Exception("Failed to read barcodes: $message", cause)
 
 
 expect class ReaderOptions() {

@@ -18,6 +18,7 @@ package cn.isning.zxingkmp
 
 import com.google.zxing.DecodeHintType
 import com.google.zxing.MultiFormatReader
+import com.google.zxing.NotFoundException
 import kotlin.properties.Delegates
 
 actual class BarcodeReader actual constructor(private val options: ReaderOptions) {
@@ -25,10 +26,15 @@ actual class BarcodeReader actual constructor(private val options: ReaderOptions
 
     // TODO: Currently zxing only supports one barcode per image: https://github.com/ISNing/ZXingKMP/issues/8
     @Throws(BarcodeReadingException::class)
-    actual fun read(imageView: ImageView): List<Barcode> =
+    actual fun read(imageView: ImageView): List<Barcode> = try {
         reader.decodeWithState(imageView.toBinaryBitmap(options.binarizer)).let {
             listOf(it.toWrapped(options.eanAddOnSymbol))
         }
+    } catch (e: NotFoundException) {
+        emptyList()
+    } catch (e: Exception) {
+        throw BarcodeReadingException(e.message ?: "Unknown error", e)
+    }
 }
 
 actual class ReaderOptions actual constructor() {
