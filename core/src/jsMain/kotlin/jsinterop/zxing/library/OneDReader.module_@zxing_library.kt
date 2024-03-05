@@ -13,7 +13,7 @@ import org.khronos.webgl.Int32Array
 
 @JsName("default")
 open external class OneDReader : Reader {
-    override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any>?/* = definedExternally */): Result
+    override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any?>/* = definedExternally */): Result
     override fun reset()
     open var doDecode: Any
     open fun decodeRow(rowNumber: Number, row: BitArray, hints: Map<DecodeHintType, Any> = definedExternally): Result

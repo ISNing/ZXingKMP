@@ -8,6 +8,6 @@
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
 external interface Reader {
-    fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any>? = definedExternally): Result
+    fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any?> = definedExternally): Result
     fun reset()
 }

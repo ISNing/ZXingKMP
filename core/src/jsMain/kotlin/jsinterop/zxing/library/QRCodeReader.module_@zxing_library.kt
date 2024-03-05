@@ -13,7 +13,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 open external class QRCodeReader : Reader {
     open var decoder: Any
     open fun getDecoder(): Decoder
-    override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any>?/* = definedExternally */): Result
+    override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any?>/* = definedExternally */): Result
     override fun reset()
 
     companion object {

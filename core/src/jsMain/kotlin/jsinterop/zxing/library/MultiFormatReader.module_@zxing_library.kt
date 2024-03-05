@@ -13,9 +13,9 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 open external class MultiFormatReader : Reader {
     open var hints: Any
     open var readers: Any
-    override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any>?/* = definedExternally */): Result
+    override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any?>/* = definedExternally */): Result
     open fun decodeWithState(image: BinaryBitmap): Result
-    open fun setHints(hints: Map<DecodeHintType, Any>? = definedExternally)
+    open fun setHints(hints: Map<DecodeHintType, Any?> = definedExternally)
     override fun reset()
     open var decodeInternal: Any
 }

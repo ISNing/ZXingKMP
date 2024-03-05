@@ -12,7 +12,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 @JsName("default")
 open external class PDF417Reader : Reader,
     MultipleBarcodeReader {
-    override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any>?/* = definedExternally */): Result
+    override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any?>/* = definedExternally */): Result
     override fun decodeMultiple(image: BinaryBitmap): Array<Result>
     override fun decodeMultiple(
         image: BinaryBitmap,
