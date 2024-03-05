@@ -13,7 +13,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 open external class Binarizer(source: LuminanceSource) {
     open var source: Any
     open fun getLuminanceSource(): LuminanceSource
-    open fun getBlackRow(y: Number, row: BitArray): BitArray
+    open fun getBlackRow(y: Number, row: BitArray?): BitArray
     open fun getBlackMatrix(): BitMatrix
     open fun createBinarizer(source: LuminanceSource): Binarizer
     open fun getWidth(): Number

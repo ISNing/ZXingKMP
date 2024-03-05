@@ -15,7 +15,7 @@ import org.khronos.webgl.Uint8ClampedArray
 open external class LuminanceSource(width: Number, height: Number) {
     open var width: Number
     open var height: Number
-    open fun getRow(y: Number, row: Uint8ClampedArray/* = definedExternally */): Uint8ClampedArray
+    open fun getRow(y: Number, row: Uint8ClampedArray?/* = definedExternally */): Uint8ClampedArray
     open fun getMatrix(): Uint8ClampedArray
     open fun getWidth(): Number
     open fun getHeight(): Number
