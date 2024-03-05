@@ -16,16 +16,22 @@ kotlin {
         }
     }
 
-//    listOf(
-//        iosX64(),
-//        iosArm64(),
-//        iosSimulatorArm64()
-//    ).forEach {
-//        it.binaries.framework {
-//            isStatic = true
-//        }
-//    }
-    jvm()
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            isStatic = true
+        }
+    }
+    jvm {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = libs.versions.kotlin.jvmTarget.get()
+            }
+        }
+    }
 
     js {
         browser()
@@ -36,10 +42,13 @@ kotlin {
 //        browser()
 //    }
 
+    applyDefaultHierarchyTemplate()
+
     sourceSets {
         commonMain.dependencies {
             //put your multiplatform dependencies here
         }
+        androidMain.get().dependsOn(jvmMain.get())
         jvmMain.dependencies {
             implementation(libs.zxing.core.jvm)
         }
