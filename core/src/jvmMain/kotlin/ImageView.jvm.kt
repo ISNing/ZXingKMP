@@ -203,16 +203,16 @@ class LuminanceSourceImpl : LuminanceSource {
         this.top = top
     }
 
-    override fun getRow(y: Int, row: ByteArray): ByteArray {
-        var row: ByteArray? = row
+    override fun getRow(y: Int, row: ByteArray?): ByteArray {
+        var res: ByteArray? = row ?: ByteArray(width)
         require(!(y < 0 || y >= height)) { "Requested row is outside the image: $y" }
         val width = width
-        if (row == null || row.size < width) {
-            row = ByteArray(width)
+        if (res == null || res.size < width) {
+            res = ByteArray(width)
         }
         val offset = (y + top) * dataWidth + left
-        System.arraycopy(luminances, offset, row, 0, width)
-        return row
+        System.arraycopy(luminances, offset, res, 0, width)
+        return res
     }
 
     override fun getMatrix(): ByteArray {

@@ -209,16 +209,16 @@ class LuminanceSourceImpl : LuminanceSource {
         this.top = top
     }
 
-    override fun getRow(y: Number, row: Uint8ClampedArray): Uint8ClampedArray {
-        var row: Uint8ClampedArray? = row
+    override fun getRow(y: Number, row: Uint8ClampedArray?): Uint8ClampedArray {
+        var res: Uint8ClampedArray = row ?: Uint8ClampedArray(width.toInt())
         require(!(y.toInt() < 0 || y.toInt() >= height.toInt())) { "Requested row is outside the image: $y" }
         val width = width
-        if (row == null || row.length < width.toInt()) {
-            row = Uint8ClampedArray(width.toInt())
+        if (res == null || res.length < width.toInt()) {
+            res = Uint8ClampedArray(width.toInt())
         }
         val offset = (y.toInt() + top) * dataWidth + left
-        System.arraycopy(luminances, offset, row, 0, width)
-        return row
+        System.arraycopy(luminances, offset, res, 0, width)
+        return res
     }
 
     override fun getMatrix(): Uint8ClampedArray {
