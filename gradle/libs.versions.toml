@@ -1,5 +1,5 @@
 [versions]
-zxing-jvm = "3.4.1"
+zxing-jvm = "3.5.3"
 zxing-cpp-kn = "2.1.1"
 zxing-js = "0.20.0"
 jvm-capability-source = "VERSION_17"
