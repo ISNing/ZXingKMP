@@ -26,7 +26,7 @@ actual class BarcodeReader actual constructor(private val options: ReaderOptions
     // TODO: Currently zxing only supports one barcode per image: https://github.com/ISNing/ZXingKMP/issues/7
     actual fun read(imageView: ImageView): List<Barcode> =
         reader.decodeWithState(imageView.toBinaryBitmap(options.binarizer)).let {
-            listOf(Barcode(it, options.eanAddOnSymbol))
+            listOf(it.toWrapped(options.eanAddOnSymbol))
         }
 }
 

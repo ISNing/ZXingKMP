@@ -27,7 +27,7 @@ actual class BarcodeReader actual constructor(private val options: ReaderOptions
     @Throws(BarcodeReadingException::class)
     actual fun read(imageView: ImageView): List<Barcode> =
         reader.decodeWithState(imageView.toBinaryBitmap(options.binarizer)).let {
-            listOf(Barcode(it, options.eanAddOnSymbol))
+            listOf(it.toWrapped(options.eanAddOnSymbol))
         }
 }
 
