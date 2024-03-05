@@ -23,7 +23,7 @@ actual interface Binarizer {
     val raw: RawBinarizer
 }
 
-open class WrappedRawBinarizer(override val raw: RawBinarizer) : Binarizer
+sealed class WrappedRawBinarizer(override val raw: RawBinarizer) : Binarizer
 
 actual object GlobalHistogramBinarizer : WrappedRawBinarizer(RawBinarizer.GlobalHistogram), Binarizer
 actual object HybridBinarizer : WrappedRawBinarizer(RawBinarizer.LocalAverage), Binarizer

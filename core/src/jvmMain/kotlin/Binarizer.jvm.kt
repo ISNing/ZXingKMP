@@ -73,7 +73,7 @@ class DelegatedZXingBinarizer(val delegated: Binarizer, source: LuminanceSource)
 
 }
 
-open class WrappedRawBinarizer(val factory: (LuminanceSource) -> RawBinarizer) : Binarizer {
+sealed class WrappedRawBinarizer(val factory: (LuminanceSource) -> RawBinarizer) : Binarizer {
     override fun getBlackRow(source: LuminanceSource, y: Int, row: BitArray?): BitArray =
         error("Do not use this, this is just for storing raw binarizer factory")
 
