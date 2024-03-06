@@ -51,7 +51,7 @@ actual class ReaderOptions actual constructor() {
         else hints.remove(DecodeHintType.PURE_BARCODE)
     }
     actual var binarizer: Binarizer = GlobalHistogramBinarizer
-    actual var formats: Set<BarcodeFormat> by Delegates.observable(BarcodeFormat.entries.toSet()) { _, _, newValue ->
+    actual var formats: Set<BarcodeFormat> by Delegates.observable(emptySet()) { _, _, newValue ->
         hints[DecodeHintType.POSSIBLE_FORMATS] = newValue.map { it.rawFormat }
     }
 
@@ -64,11 +64,21 @@ actual class ReaderOptions actual constructor() {
             EanAddOnSymbol.Require -> hints[DecodeHintType.ALLOWED_EAN_EXTENSIONS] = arrayOf(2, 5)
         }
     }
-    actual var maxNumberOfSymbols: Int = 1
+    actual var maxNumberOfSymbols: Int
 
-    private var hints: MutableMap<DecodeHintType, Any?> = mutableMapOf()
+    private val hints: MutableMap<DecodeHintType, Any?> = mutableMapOf()
 
     val asHints get() = hints.toMap()
+
+    init {
+        tryHarder = false
+        tryInvert = false
+        isPure = false
+        binarizer = GlobalHistogramBinarizer
+        formats = BarcodeFormat.entries.toSet()
+        eanAddOnSymbol = EanAddOnSymbol.Read
+        maxNumberOfSymbols = 1
+    }
 }
 
 actual enum class EanAddOnSymbol {

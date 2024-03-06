@@ -91,21 +91,21 @@ actual object GlobalHistogramBinarizer :
 actual object HybridBinarizer : WrappedRawBinarizer({ source -> com.google.zxing.common.HybridBinarizer(source) }),
     Binarizer
 
-open class ThresholdBinarizer(threshold: Int) :
+open class ThresholdBinarizer(threshold: UByte) :
     WrappedRawBinarizer({ source -> ThresholdRawBinarizer(source, threshold) }), Binarizer
 
-actual object BoolCastBinarizer : ThresholdBinarizer(1), Binarizer
-actual object FixedThresholdBinarizer : ThresholdBinarizer(127), Binarizer
+actual object BoolCastBinarizer : ThresholdBinarizer(1.toUByte()), Binarizer
+actual object FixedThresholdBinarizer : ThresholdBinarizer(127.toUByte()), Binarizer
 
-class ThresholdRawBinarizer(source: LuminanceSource, private val threshold: Int) : RawBinarizer(source) {
+class ThresholdRawBinarizer(source: LuminanceSource, private val threshold: UByte) : RawBinarizer(source) {
     override fun getBlackRow(y: Int, row: BitArray?): BitArray {
         val width = luminanceSource.width
         val luminances = luminanceSource.getRow(y, null)
-        val res = row ?: BitArray(width)
-        for (x in 0 until width) {
-            val pixel = luminances[x]
-            if (pixel <= threshold) res.set(x)
-        }
+        val res: BitArray = if (row == null || row.size < width) BitArray(width) else row
+        for (x in 0 until width)
+            if (luminances[x].toUByte() <= threshold)
+                res.set(x)
+
         return res
     }
 
@@ -114,14 +114,13 @@ class ThresholdRawBinarizer(source: LuminanceSource, private val threshold: Int)
         val height = luminanceSource.height
         val luminances = luminanceSource.matrix
         val res = BitMatrix(width, height)
-        var yOffset = 0
+        var yOffset: Int
         for (y in 0 until height) {
             yOffset = y * width
-            for (x in 0 until width) {
-                if (luminances[yOffset + x] <= threshold) {
+            for (x in 0 until width)
+                if (luminances[yOffset + x].toUByte() <= threshold)
                     res.set(x, y)
-                }
-            }
+
         }
         return res
     }

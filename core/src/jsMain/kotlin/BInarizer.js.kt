@@ -92,21 +92,21 @@ actual object GlobalHistogramBinarizer :
 actual object HybridBinarizer :
     WrappedRawBinarizer({ source -> cn.isning.zxingkmp.jsinterop.zxing.library.HybridBinarizer(source) }), Binarizer
 
-open class ThresholdBinarizer(threshold: Int) :
+open class ThresholdBinarizer(threshold: UByte) :
     WrappedRawBinarizer({ source -> ThresholdRawBinarizer(source, threshold) }), Binarizer
 
-actual object BoolCastBinarizer : ThresholdBinarizer(1), Binarizer
-actual object FixedThresholdBinarizer : ThresholdBinarizer(127), Binarizer
+actual object BoolCastBinarizer : ThresholdBinarizer(1.toUByte()), Binarizer
+actual object FixedThresholdBinarizer : ThresholdBinarizer(127.toUByte()), Binarizer
 
-class ThresholdRawBinarizer(source: LuminanceSource, private val threshold: Int) : RawBinarizer(source) {
+class ThresholdRawBinarizer(source: LuminanceSource, private val threshold: UByte) : RawBinarizer(source) {
     override fun getBlackRow(y: Number, row: BitArray?): BitArray {
         val width = getLuminanceSource().width.toInt()
         val luminances = getLuminanceSource().getRow(y, null)
         val res = row ?: BitArray(width)
-        for (x in 0 until width) {
-            val pixel = luminances[x]
-            if (pixel <= threshold) res.set(x)
-        }
+        for (x in 0 until width)
+            if (luminances[x].toUByte() <= threshold)
+                res.set(x)
+
         return res
     }
 
@@ -115,14 +115,13 @@ class ThresholdRawBinarizer(source: LuminanceSource, private val threshold: Int)
         val height = getLuminanceSource().height.toInt()
         val luminances = getLuminanceSource().getMatrix()
         val res = BitMatrix(width, height)
-        var yOffset = 0
+        var yOffset: Int
         for (y in 0 until height) {
             yOffset = y * width
-            for (x in 0 until width) {
-                if (luminances[yOffset + x] <= threshold) {
+            for (x in 0 until width)
+                if (luminances[yOffset + x].toUByte() <= threshold.toUByte())
                     res.set(x, y)
-                }
-            }
+
         }
         return res
     }

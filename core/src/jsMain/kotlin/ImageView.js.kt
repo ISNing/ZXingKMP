@@ -22,8 +22,9 @@ package cn.isning.zxingkmp
 import cn.isning.zxingkmp.ImageFormat.*
 import cn.isning.zxingkmp.jsinterop.zxing.library.BinaryBitmap
 import cn.isning.zxingkmp.jsinterop.zxing.library.LuminanceSource
-import cn.isning.zxingkmp.jsinterop.zxing.library.System
+import cn.isning.zxingkmp.misc.toUint8ClampedArray
 import org.khronos.webgl.Uint8ClampedArray
+import org.khronos.webgl.get
 import org.khronos.webgl.set
 
 fun ImageView.toBinaryBitmap(binarizer: Binarizer): BinaryBitmap =
@@ -46,6 +47,7 @@ fun ImageView.toBinaryBitmap(binarizer: Binarizer): BinaryBitmap =
  * limitations under the License.
  */
 
+@OptIn(ExperimentalUnsignedTypes::class)
 class LuminanceSourceImpl : LuminanceSource {
     private val luminances: Uint8ClampedArray
     private val dataWidth: Int
@@ -130,7 +132,7 @@ class LuminanceSourceImpl : LuminanceSource {
         // Total number of pixels suffices, can ignore shape
         val size = width * height
         if (format == Lum) {
-            luminances = Uint8ClampedArray(pixels.toTypedArray())
+            luminances = pixels.asUByteArray().toUint8ClampedArray()
             return
         }
         luminances = Uint8ClampedArray(size)
@@ -214,7 +216,9 @@ class LuminanceSourceImpl : LuminanceSource {
         val width = width.toInt()
         val res: Uint8ClampedArray = if (row == null || row.length < width) Uint8ClampedArray(width) else row
         val offset = (y.toInt() + top) * dataWidth + left
-        System.arraycopy(luminances, offset, res, 0, width)
+        for (x in 0 until width) {
+            res[x] = luminances[offset + x]
+        }
         return res
     }
 
@@ -234,14 +238,18 @@ class LuminanceSourceImpl : LuminanceSource {
 
         // If the width matches the full width of the underlying data, perform a single copy.
         if (width == dataWidth) {
-            System.arraycopy(luminances, inputOffset, matrix, 0, area)
+            for (i in 0 until area) {
+                matrix[i] = luminances[inputOffset + i]
+            }
             return matrix
         }
 
         // Otherwise copy one cropped row at a time.
         for (y in 0 until height) {
             val outputOffset = y * width
-            System.arraycopy(luminances, inputOffset, matrix, outputOffset, width)
+            for (x in 0 until width) {
+                matrix[outputOffset + x] = luminances[inputOffset + x]
+            }
             inputOffset += dataWidth
         }
         return matrix

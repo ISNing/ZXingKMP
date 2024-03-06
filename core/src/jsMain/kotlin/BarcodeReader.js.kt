@@ -31,6 +31,7 @@ actual class BarcodeReader actual constructor(private val options: ReaderOptions
             listOf(it.toWrapped(options.eanAddOnSymbol))
         }
     } catch (e: NotFoundException) {
+        e.printStackTrace()
         emptyList()
     } catch (e: Exception) {
         throw BarcodeReadingException(e.message ?: "Unknown error", e)
@@ -42,31 +43,44 @@ actual class ReaderOptions actual constructor() {
         if (newValue) hints[DecodeHintType.TRY_HARDER] = true
         else hints.remove(DecodeHintType.TRY_HARDER)
     }
-    actual var tryInvert: Boolean = false
-        set(value) = TODO("This is not supported by upstream library yet. See: https://github.com/ISNing/ZXingKMP/issues/9")
+    @Deprecated("Not supported by upstream library yet. See: https://github.com/ISNing/ZXingKMP/issues/9", level = DeprecationLevel.WARNING)
+    actual var tryInvert: Boolean
     actual var isPure: Boolean by Delegates.observable(false) { _, _, newValue ->
         if (newValue) hints[DecodeHintType.PURE_BARCODE] = true
         else hints.remove(DecodeHintType.PURE_BARCODE)
     }
-    actual var binarizer: Binarizer = GlobalHistogramBinarizer
-    actual var formats: Set<BarcodeFormat> by Delegates.observable(BarcodeFormat.entries.toSet()) { _, _, newValue ->
-        hints[DecodeHintType.POSSIBLE_FORMATS] = newValue.map { it.raw }
+    actual var binarizer: Binarizer
+    @OptIn(ExperimentalJsExport::class, ExperimentalJsCollectionsApi::class)
+    actual var formats: Set<BarcodeFormat> by Delegates.observable(emptySet()) { _, _, newValue ->
+        hints[DecodeHintType.POSSIBLE_FORMATS] = newValue.map { it.raw }.asJsReadonlyArrayView()
     }
 
     // Here we're following https://github.com/zxing-cpp/zxing-cpp/issues/159
+    @OptIn(ExperimentalJsExport::class, ExperimentalJsCollectionsApi::class)
     actual var eanAddOnSymbol: EanAddOnSymbol by Delegates.observable(EanAddOnSymbol.Ignore) { _, _, newValue ->
         when (newValue) {
             // Ignore & Read: Handled by erasing ean add-on when requesting text in Barcode
             EanAddOnSymbol.Ignore -> hints.remove(DecodeHintType.ALLOWED_EAN_EXTENSIONS)
             EanAddOnSymbol.Read -> hints.remove(DecodeHintType.ALLOWED_EAN_EXTENSIONS)
-            EanAddOnSymbol.Require -> hints[DecodeHintType.ALLOWED_EAN_EXTENSIONS] = arrayOf(2, 5)
+            EanAddOnSymbol.Require -> hints[DecodeHintType.ALLOWED_EAN_EXTENSIONS] = listOf(2, 5).asJsReadonlyArrayView()
         }
     }
-    actual var maxNumberOfSymbols: Int = 1
+    actual var maxNumberOfSymbols: Int
 
-    private var hints: MutableMap<DecodeHintType, Any?> = mutableMapOf()
+    private val hints: MutableMap<DecodeHintType, Any?> = mutableMapOf()
 
     val asHints get() = hints.toMap()
+
+    init {
+        tryHarder = false
+        @Suppress("DEPRECATION")
+        tryInvert = false
+        isPure = false
+        binarizer = GlobalHistogramBinarizer
+        formats = BarcodeFormat.entries.toSet()
+        eanAddOnSymbol = EanAddOnSymbol.Read
+        maxNumberOfSymbols = 1
+    }
 }
 
 actual enum class EanAddOnSymbol {

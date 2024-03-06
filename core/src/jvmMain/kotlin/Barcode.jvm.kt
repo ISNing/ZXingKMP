@@ -25,23 +25,44 @@ actual class Barcode(private val raw: Result, private val eanAddOnSymbol: EanAdd
     actual val format: BarcodeFormat by lazy { raw.barcodeFormat.toWrapped() }
     actual val bytes: ByteArray?
         get() = raw.rawBytes
-    actual val text: String? by lazy { when (eanAddOnSymbol) {
+    actual val text: String? by lazy {
+        when (eanAddOnSymbol) {
             EanAddOnSymbol.Ignore -> raw.text
             EanAddOnSymbol.Read, EanAddOnSymbol.Require -> raw.resultMetadata[ResultMetadataType.UPC_EAN_EXTENSION]
                 ?.toString()?.let { "${raw.text}+$it" } ?: raw.text
-        } }
+        }
+    }
     actual val ecLevel: String?
-        get() = raw.resultMetadata[ResultMetadataType.ERROR_CORRECTION_LEVEL]?.toString()
+        get() = raw.resultMetadata[ResultMetadataType.ERROR_CORRECTION_LEVEL] as? String
     actual val symbologyIdentifier: String?
-        get() = raw.resultMetadata[ResultMetadataType.SYMBOLOGY_IDENTIFIER]?.toString()
+        get() = raw.resultMetadata[ResultMetadataType.SYMBOLOGY_IDENTIFIER] as? String
     actual val position: Position by lazy { raw.resultPoints.toWrapped() }
     actual val orientation: Int
-        get() = raw.resultMetadata[ResultMetadataType.ORIENTATION] as Int
+        get() = raw.resultMetadata[ResultMetadataType.ORIENTATION] as? Int ?: position.orientation
 }
 
 fun Result.toWrapped(eanAddOnSymbol: EanAddOnSymbol): Barcode = Barcode(this, eanAddOnSymbol)
 
-fun ResultPoint.toWrapped(): Point = Point(x, y)
+fun ResultPoint.toWrapped(): Point = Point((x - 0.5).toInt(), (y - 0.5).toInt())
 
-fun Array<ResultPoint>.toWrapped(): Position =
-    Position(this[0].toWrapped(), this[1].toWrapped(), this[2].toWrapped(), this[3].toWrapped())
+fun Array<ResultPoint>.toWrapped(): Position = when (size) {
+    2 -> Position(
+        topLeft = this[0].toWrapped(),
+        topRight = this[1].toWrapped()
+    )
+
+    3 -> Position(
+        bottomLeft = this[0].toWrapped(),
+        topLeft = this[1].toWrapped(),
+        topRight = this[2].toWrapped()
+    )
+
+    4 -> Position(
+        bottomLeft = this[0].toWrapped(),
+        topLeft = this[1].toWrapped(),
+        topRight = this[2].toWrapped(),
+        bottomRight = this[3].toWrapped()
+    )
+
+    else -> error("Unsupported number of points: $size, report this to the library maintainers at github")
+}
