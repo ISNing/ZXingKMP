@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("MaskUtil")
 open external class MaskUtil {
     companion object {
         var N1: Any

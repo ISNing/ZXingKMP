@@ -41,7 +41,7 @@ external enum class CharacterSetValueIdentifiers {
     EUC_KR /* = 26 */
 }
 
-@JsName("default")
+@JsName("CharacterSetECI")
 open external class CharacterSetECI {
     open var valueIdentifier: CharacterSetValueIdentifiers
     open var name: String

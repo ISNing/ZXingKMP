@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Int32Array
 
-@JsName("default")
+@JsName("PDF417ResultMetadata")
 open external class PDF417ResultMetadata {
     open var segmentIndex: Any
     open var fileId: Any

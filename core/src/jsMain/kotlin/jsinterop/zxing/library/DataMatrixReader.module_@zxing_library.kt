@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("DataMatrixReader")
 open external class DataMatrixReader : Reader {
     open var decoder: Any
     override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any?>/* = definedExternally */): Result

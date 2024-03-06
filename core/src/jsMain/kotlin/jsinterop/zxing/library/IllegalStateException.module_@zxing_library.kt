@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("IllegalStateException")
 open external class IllegalStateException : Exception {
     companion object {
         var kind: String

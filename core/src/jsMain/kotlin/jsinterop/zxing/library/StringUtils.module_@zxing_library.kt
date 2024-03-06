@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
 
-@JsName("default")
+@JsName("StringUtils")
 open external class StringUtils {
     companion object {
         var SHIFT_JIS: String

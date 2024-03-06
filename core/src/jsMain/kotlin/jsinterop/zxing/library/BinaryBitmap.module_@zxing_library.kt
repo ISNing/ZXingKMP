@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("BinaryBitmap")
 open external class BinaryBitmap(binarizer: Binarizer) {
     open var binarizer: Any
     open var matrix: Any

@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("RSS14Reader")
 open external class RSS14Reader : AbstractRSSReader {
     open var possibleLeftPairs: Any
     open var possibleRightPairs: Any

@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
 
-@JsName("default")
+@JsName("StringEncoding")
 open external class StringEncoding {
     companion object {
         var customDecoder: (bytes: Uint8Array, encodingName: String) -> String

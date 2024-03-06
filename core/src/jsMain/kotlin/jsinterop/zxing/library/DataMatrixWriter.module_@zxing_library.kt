@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("DataMatrixWriter")
 open external class DataMatrixWriter : Writer {
     override fun encode(
         contents: String,

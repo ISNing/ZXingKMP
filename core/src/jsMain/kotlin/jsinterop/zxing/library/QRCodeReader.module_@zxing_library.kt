@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("QRCodeReader")
 open external class QRCodeReader : Reader {
     open var decoder: Any
     open fun getDecoder(): Decoder

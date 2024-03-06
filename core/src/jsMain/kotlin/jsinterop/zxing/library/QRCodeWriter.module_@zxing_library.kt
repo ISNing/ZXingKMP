@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("QRCodeWriter")
 open external class QRCodeWriter : Writer {
     override fun encode(
         contents: String,

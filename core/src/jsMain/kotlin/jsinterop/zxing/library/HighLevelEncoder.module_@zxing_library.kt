@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
 
-@JsName("default")
+@JsName("HighLevelEncoder")
 open external class HighLevelEncoder(text: Uint8Array) {
     open var text: Any
     open fun encode(): BitArray

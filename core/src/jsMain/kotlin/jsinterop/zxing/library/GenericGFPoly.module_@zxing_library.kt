@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Int32Array
 
-@JsName("default")
+@JsName("GenericGFPoly")
 open external class GenericGFPoly(field: AbstractGenericGF, coefficients: Int32Array) {
     open var field: Any
     open var coefficients: Any

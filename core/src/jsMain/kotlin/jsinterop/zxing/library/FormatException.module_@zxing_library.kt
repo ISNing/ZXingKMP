@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("FormatException")
 open external class FormatException : Exception {
     companion object {
         var kind: String

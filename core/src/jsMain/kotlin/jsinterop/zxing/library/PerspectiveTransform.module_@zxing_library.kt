@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Float32Array
 
-@JsName("default")
+@JsName("PerspectiveTransform")
 open external class PerspectiveTransform {
     open var a11: Any
     open var a21: Any

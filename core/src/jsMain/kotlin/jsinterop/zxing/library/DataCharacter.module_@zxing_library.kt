@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("DataCharacter")
 open external class DataCharacter(value: Number, checksumPortion: Number) {
     open var value: Any
     open var checksumPortion: Any

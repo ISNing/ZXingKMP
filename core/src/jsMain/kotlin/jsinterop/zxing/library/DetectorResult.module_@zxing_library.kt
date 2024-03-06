@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("DetectorResult")
 open external class DetectorResult(bits: BitMatrix, points: Array<ResultPoint>) {
     open var bits: Any
     open var points: Any

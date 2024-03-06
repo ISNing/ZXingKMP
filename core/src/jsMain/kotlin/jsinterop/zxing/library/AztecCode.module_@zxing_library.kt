@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("AztecCode")
 open external class AztecCode {
     open var compact: Any
     open var size: Any

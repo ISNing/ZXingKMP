@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("Code93Reader")
 open external class Code93Reader : OneDReader {
     open var decodeRowResult: Any
     open var counters: Any

@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("ECBlocks")
 open external class ECBlocks(ecCodewordsPerBlock: Number, vararg ecBlocks: ECB) {
     open var ecCodewordsPerBlock: Any
     open var ecBlocks: Any

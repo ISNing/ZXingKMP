@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("Exception")
 open external class Exception(message: String = definedExternally) :
     CustomError {
     override var message: String

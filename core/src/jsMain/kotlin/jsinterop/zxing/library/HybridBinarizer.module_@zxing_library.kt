@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("HybridBinarizer")
 open external class HybridBinarizer(source: LuminanceSource) :
     GlobalHistogramBinarizer {
     open var matrix: Any

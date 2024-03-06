@@ -12,7 +12,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 import org.khronos.webgl.Int32Array
 import org.khronos.webgl.Uint8Array
 
-@JsName("default")
+@JsName("BitArray")
 open external class BitArray(size: Number = definedExternally, bits: Int32Array = definedExternally) {
     open var size: Any
     open var bits: Any

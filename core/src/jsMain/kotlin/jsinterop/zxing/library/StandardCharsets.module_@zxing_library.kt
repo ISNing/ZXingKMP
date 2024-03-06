@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("StandardCharsets")
 open external class StandardCharsets {
     companion object {
         var ISO_8859_1: Any

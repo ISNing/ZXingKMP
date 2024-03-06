@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("MultiFormatWriter")
 open external class MultiFormatWriter : Writer {
     override fun encode(
         contents: String,

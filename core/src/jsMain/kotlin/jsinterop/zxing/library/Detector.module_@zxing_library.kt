@@ -17,7 +17,7 @@ open external class Point(x: Number, y: Number) {
     open fun getY(): Number
 }
 
-@JsName("default")
+@JsName("Detector")
 open external class Detector(image: BitMatrix) {
     open var EXPECTED_CORNER_BITS: Any
     open var image: Any

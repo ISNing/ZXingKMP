@@ -12,7 +12,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 import org.khronos.webgl.Int32Array
 import org.khronos.webgl.Uint8Array
 
-@JsName("default")
+@JsName("Arrays")
 open external class Arrays {
     companion object {
         fun fill(a: Int32Array, param_val: int)

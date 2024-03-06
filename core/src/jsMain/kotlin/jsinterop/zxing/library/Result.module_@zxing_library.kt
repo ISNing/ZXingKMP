@@ -12,7 +12,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 import org.khronos.webgl.Uint8Array
 
 
-@JsName("default")
+@JsName("Result")
 open external class Result(
     text: String,
     rawBytes: Uint8Array,

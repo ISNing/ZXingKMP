@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("GridSamplerInstance")
 open external class GridSamplerInstance {
     companion object {
         var gridSampler: Any

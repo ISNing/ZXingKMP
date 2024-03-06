@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("GeneralAppIdDecoder")
 open external class GeneralAppIdDecoder(information: BitArray) {
     open var information: Any
     open var current: Any

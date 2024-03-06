@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("RSSExpandedReader")
 open external class RSSExpandedReader : AbstractRSSReader {
     open var pairs: Any
     open var rows: Any

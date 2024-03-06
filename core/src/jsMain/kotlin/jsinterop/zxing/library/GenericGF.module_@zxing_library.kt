@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("GenericGF")
 open external class GenericGF(primitive: Number, size: Number, generatorBase: Number) :
     AbstractGenericGF {
     open var primitive: Any

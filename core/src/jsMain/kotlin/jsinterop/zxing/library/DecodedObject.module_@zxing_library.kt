@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("DecodedObject")
 open external class DecodedObject(newPosition: Number) {
     open var newPosition: Any
     open fun getNewPosition(): Number

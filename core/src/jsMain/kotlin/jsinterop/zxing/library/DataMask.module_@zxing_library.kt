@@ -20,7 +20,7 @@ external enum class DataMaskValues {
     DATA_MASK_111 /* = 7 */
 }
 
-@JsName("default")
+@JsName("DataMask")
 open external class DataMask(value: DataMaskValues, isMasked: (i: Number, j: Number) -> Boolean) {
     open var value: Any
     open var isMasked: Any

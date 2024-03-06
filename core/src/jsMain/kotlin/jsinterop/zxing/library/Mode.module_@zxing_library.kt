@@ -22,7 +22,7 @@ external enum class ModeValues {
     HANZI /* = 9 */
 }
 
-@JsName("default")
+@JsName("Mode")
 open external class Mode {
     open var value: Any
     open var stringValue: Any

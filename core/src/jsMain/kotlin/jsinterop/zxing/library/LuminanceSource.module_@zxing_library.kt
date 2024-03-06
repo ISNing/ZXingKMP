@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8ClampedArray
 
-@JsName("default")
+@JsName("LuminanceSource")
 open external class LuminanceSource(width: Number, height: Number) {
     open var width: Number
     open var height: Number

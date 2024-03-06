@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("DecodedInformation")
 open external class DecodedInformation(
     newPosition: Number,
     newString: String,

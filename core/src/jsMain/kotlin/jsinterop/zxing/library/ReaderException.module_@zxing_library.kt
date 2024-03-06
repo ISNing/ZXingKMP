@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("ReaderException")
 open external class ReaderException : Exception {
     companion object {
         var kind: String

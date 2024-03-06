@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("Code39Reader")
 open external class Code39Reader(
     usingCheckDigit: Boolean = definedExternally,
     extendedMode: Boolean = definedExternally

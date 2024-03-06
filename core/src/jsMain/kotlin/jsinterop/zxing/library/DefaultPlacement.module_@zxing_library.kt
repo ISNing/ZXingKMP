@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
 
-@JsName("default")
+@JsName("DefaultPlacement")
 open external class DefaultPlacement(codewords: String, numcols: Number, numrows: Number) {
     open var codewords: Any
     open var numcols: Any

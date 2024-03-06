@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("DefaultGridSampler")
 open external class DefaultGridSampler : GridSampler {
     override fun sampleGrid(
         image: BitMatrix,

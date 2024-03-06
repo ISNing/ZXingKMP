@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("ReedSolomonException")
 open external class ReedSolomonException : Exception {
     companion object {
         var kind: String

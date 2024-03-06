@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("QRCode")
 open external class QRCode {
     open var mode: Any
     open var ecLevel: Any

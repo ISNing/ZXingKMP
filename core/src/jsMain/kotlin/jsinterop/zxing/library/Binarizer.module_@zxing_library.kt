@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("Binarizer")
 open external class Binarizer(source: LuminanceSource) {
     open var source: Any
     open fun getLuminanceSource(): LuminanceSource

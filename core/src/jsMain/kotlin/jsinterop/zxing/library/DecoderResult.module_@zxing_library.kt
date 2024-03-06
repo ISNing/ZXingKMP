@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
 
-@JsName("default")
+@JsName("DecoderResult")
 open external class DecoderResult(
     rawBytes: Uint8Array,
     text: String,

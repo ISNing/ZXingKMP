@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
 
-@JsName("default")
+@JsName("DecodedBitStreamParser")
 open external class DecodedBitStreamParser {
     companion object {
         var ALPHANUMERIC_CHARS: Any

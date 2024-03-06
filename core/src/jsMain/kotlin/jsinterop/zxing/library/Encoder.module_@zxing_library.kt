@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
 
-@JsName("default")
+@JsName("Encoder")
 open external class Encoder {
     companion object {
         var DEFAULT_EC_PERCENT: int

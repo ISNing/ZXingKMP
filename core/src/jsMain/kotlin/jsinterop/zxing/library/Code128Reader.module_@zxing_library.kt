@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("Code128Reader")
 open external class Code128Reader : OneDReader {
     override fun decodeRow(
         rowNumber: Number,

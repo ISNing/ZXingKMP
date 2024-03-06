@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Int32Array
 
-@JsName("default")
+@JsName("Version")
 open external class Version {
     open var versionNumber: Any
     open var alignmentPatternCenters: Any

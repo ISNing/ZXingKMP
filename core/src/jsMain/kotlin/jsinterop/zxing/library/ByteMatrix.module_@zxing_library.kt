@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
 
-@JsName("default")
+@JsName("ByteMatrix")
 open external class ByteMatrix(width: Number, height: Number) {
     open var width: Any
     open var height: Any

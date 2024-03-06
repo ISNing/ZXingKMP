@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("StringBuilder")
 open external class StringBuilder(value: String = definedExternally) {
     open var value: Any
     open var encoding: Any

@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Int32Array
 
-@JsName("default")
+@JsName("BitMatrix")
 open external class BitMatrix(
     width: Number,
     height: Number = definedExternally,

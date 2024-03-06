@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Int32Array
 
-@JsName("default")
+@JsName("ReedSolomonDecoder")
 open external class ReedSolomonDecoder(field: GenericGF) {
     open var field: Any
     open fun decode(received: Int32Array, twoS: Number)

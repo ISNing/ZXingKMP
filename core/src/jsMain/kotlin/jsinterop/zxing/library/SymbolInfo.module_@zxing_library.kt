@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("SymbolInfo")
 open external class SymbolInfo(
     rectangular: Boolean,
     dataCapacity: Number,

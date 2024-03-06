@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("ResultPoint")
 open external class ResultPoint(x: float, y: float) {
     open var x: Any
     open var y: Any

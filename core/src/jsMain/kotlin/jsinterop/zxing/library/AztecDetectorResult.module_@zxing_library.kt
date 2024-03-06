@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("AztecDetectorResult")
 open external class AztecDetectorResult(
     bits: BitMatrix,
     points: Array<ResultPoint>,

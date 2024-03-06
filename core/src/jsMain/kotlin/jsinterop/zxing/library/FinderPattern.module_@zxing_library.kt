@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("FinderPattern")
 open external class FinderPattern(
     value: Number,
     startEnd: Array<Number>,

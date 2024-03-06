@@ -16,7 +16,7 @@ external enum class ErrorCorrectionLevelValues {
     H /* = 3 */
 }
 
-@JsName("default")
+@JsName("ErrorCorrectionLevel")
 open external class ErrorCorrectionLevel {
     open var value: Any
     open var stringValue: Any

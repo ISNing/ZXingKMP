@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("Integer")
 open external class Integer {
     companion object {
         var MIN_VALUE_32_BITS: Number

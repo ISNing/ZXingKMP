@@ -11,11 +11,11 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8ClampedArray
 
-@JsName("default")
+@JsName("InvertedLuminanceSource")
 open external class InvertedLuminanceSource(delegate: LuminanceSource) :
     LuminanceSource {
     open var delegate: Any
-    override fun getRow(y: Number, row: Uint8ClampedArray/* = definedExternally */): Uint8ClampedArray
+    override fun getRow(y: Number, row: Uint8ClampedArray?/* = definedExternally */): Uint8ClampedArray
     override fun getMatrix(): Uint8ClampedArray
     override fun isCropSupported(): Boolean
     override fun crop(left: Number, top: Number, width: Number, height: Number): LuminanceSource

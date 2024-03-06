@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("FormatInformation")
 open external class FormatInformation {
     open var errorCorrectionLevel: Any
     open var dataMask: Any

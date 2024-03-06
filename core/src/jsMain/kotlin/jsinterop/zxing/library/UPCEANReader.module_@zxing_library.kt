@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Int32Array
 
-@JsName("default")
+@JsName("UPCEANReader")
 open external class UPCEANReader : AbstractUPCEANReader {
     override fun decodeRow(
         rowNumber: Number,

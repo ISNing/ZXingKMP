@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("ITFReader")
 open external class ITFReader : OneDReader {
     open var narrowLineWidth: Any
     override fun decodeRow(

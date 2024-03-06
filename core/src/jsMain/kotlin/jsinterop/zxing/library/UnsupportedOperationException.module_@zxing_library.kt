@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("UnsupportedOperationException")
 open external class UnsupportedOperationException : Exception {
     companion object {
         var kind: String

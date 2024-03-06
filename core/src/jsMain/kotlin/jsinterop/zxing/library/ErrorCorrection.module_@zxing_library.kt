@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Int32Array
 
-@JsName("default")
+@JsName("ErrorCorrection")
 open external class ErrorCorrection {
     open var field: Any
     open fun decode(received: Int32Array, numECCodewords: int, erasures: Int32Array): int

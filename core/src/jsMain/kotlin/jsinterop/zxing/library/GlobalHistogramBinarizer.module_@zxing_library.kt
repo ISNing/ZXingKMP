@@ -9,12 +9,12 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("GlobalHistogramBinarizer")
 open external class GlobalHistogramBinarizer(source: LuminanceSource) :
     Binarizer {
     open var luminances: Any
     open var buckets: Any
-    override fun getBlackRow(y: Number, row: BitArray): BitArray
+    override fun getBlackRow(y: Number, row: BitArray?): BitArray
     override fun getBlackMatrix(): BitMatrix
     override fun createBinarizer(source: LuminanceSource): Binarizer
     open var initArrays: Any

@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("Charset")
 open external class Charset : CharacterSetECI {
     companion object {
         fun forName(name: String): Charset

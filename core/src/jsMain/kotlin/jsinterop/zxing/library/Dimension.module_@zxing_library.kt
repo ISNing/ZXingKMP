@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("Dimension")
 open external class Dimension(width: Number, height: Number) {
     open var width: Any
     open var height: Any

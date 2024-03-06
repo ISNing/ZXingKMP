@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Int32Array
 
-@JsName("default")
+@JsName("MathUtils")
 open external class MathUtils {
     companion object {
         fun round(d: Number): Number

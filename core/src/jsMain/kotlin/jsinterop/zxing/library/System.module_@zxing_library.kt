@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("System")
 open external class System {
     companion object {
         fun arraycopy(src: Any, srcPos: Number, dest: Any, destPos: Number, length: Number)

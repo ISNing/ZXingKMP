@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("CodaBarReader")
 open external class CodaBarReader : OneDReader {
     open var CODA_BAR_CHAR_SET: Any
     override fun decodeRow(

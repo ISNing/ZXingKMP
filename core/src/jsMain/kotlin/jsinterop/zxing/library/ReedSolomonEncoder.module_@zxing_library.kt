@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Int32Array
 
-@JsName("default")
+@JsName("ReedSolomonEncoder")
 open external class ReedSolomonEncoder(field: GenericGF) {
     open var field: Any
     open var cachedGenerators: Any

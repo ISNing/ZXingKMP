@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Float32Array
 
-@JsName("default")
+@JsName("GridSampler")
 open external class GridSampler {
     open fun sampleGrid(
         image: BitMatrix,

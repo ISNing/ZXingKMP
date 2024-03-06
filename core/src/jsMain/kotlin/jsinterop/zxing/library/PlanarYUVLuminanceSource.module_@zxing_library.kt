@@ -12,7 +12,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 import org.khronos.webgl.Int32Array
 import org.khronos.webgl.Uint8ClampedArray
 
-@JsName("default")
+@JsName("PlanarYUVLuminanceSource")
 open external class PlanarYUVLuminanceSource(
     yuvData: Uint8ClampedArray,
     dataWidth: Number,
@@ -29,7 +29,7 @@ open external class PlanarYUVLuminanceSource(
     open var dataHeight: Any
     open var left: Any
     open var top: Any
-    override fun getRow(y: Number, row: Uint8ClampedArray/* = definedExternally */): Uint8ClampedArray
+    override fun getRow(y: Number, row: Uint8ClampedArray?/* = definedExternally */): Uint8ClampedArray
     override fun getMatrix(): Uint8ClampedArray
     override fun isCropSupported(): Boolean
     override fun crop(left: Number, top: Number, width: Number, height: Number): LuminanceSource

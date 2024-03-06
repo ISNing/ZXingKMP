@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("MultiFormatOneDReader")
 open external class MultiFormatOneDReader(hints: Map<DecodeHintType, Any> = definedExternally) :
     OneDReader {
     open var readers: Any

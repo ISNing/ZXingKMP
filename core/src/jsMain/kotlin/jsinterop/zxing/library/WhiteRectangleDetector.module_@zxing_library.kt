@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("WhiteRectangleDetector")
 open external class WhiteRectangleDetector(
     image: BitMatrix,
     initSize: Number = definedExternally,

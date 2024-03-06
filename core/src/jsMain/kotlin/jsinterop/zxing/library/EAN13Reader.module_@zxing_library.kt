@@ -16,7 +16,7 @@ external interface `T$5` {
     var resultString: String
 }
 
-@JsName("default")
+@JsName("EAN13Reader")
 open external class EAN13Reader : UPCEANReader {
     open var decodeMiddleCounters: Any
     override fun decodeMiddle(row: BitArray, startRange: Int32Array, resultString: String): `T$5`

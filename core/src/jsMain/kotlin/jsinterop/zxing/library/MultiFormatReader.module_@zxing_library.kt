@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("MultiFormatReader")
 open external class MultiFormatReader : Reader {
     open var hints: Any
     open var readers: Any

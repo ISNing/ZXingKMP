@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("ArithmeticException")
 open external class ArithmeticException : Exception {
     companion object {
         var kind: String

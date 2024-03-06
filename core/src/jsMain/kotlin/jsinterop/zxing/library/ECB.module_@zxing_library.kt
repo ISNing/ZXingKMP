@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("ECB")
 open external class ECB(count: Number, dataCodewords: Number) {
     open var count: Any
     open var dataCodewords: Any

@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
 
-@JsName("default")
+@JsName("BitSource")
 open external class BitSource(bytes: Uint8Array) {
     open var bytes: Any
     open var byteOffset: Any

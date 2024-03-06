@@ -11,7 +11,7 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
 
-@JsName("default")
+@JsName("Decoder")
 open external class Decoder {
     open var ddata: Any
     open fun decode(detectorResult: AztecDetectorResult): DecoderResult

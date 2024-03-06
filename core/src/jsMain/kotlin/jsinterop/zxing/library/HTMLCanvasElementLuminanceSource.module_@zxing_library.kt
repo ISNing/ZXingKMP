@@ -15,7 +15,7 @@ open external class HTMLCanvasElementLuminanceSource(canvas: HTMLCanvasElement) 
     open var canvas: Any
     open var buffer: Any
     open var tempCanvasElement: Any
-    override fun getRow(y: Number, row: Uint8ClampedArray): Uint8ClampedArray
+    override fun getRow(y: Number, row: Uint8ClampedArray?): Uint8ClampedArray
     override fun getMatrix(): Uint8ClampedArray
     override fun isCropSupported(): Boolean
     override fun crop(left: Number, top: Number, width: Number, height: Number): LuminanceSource

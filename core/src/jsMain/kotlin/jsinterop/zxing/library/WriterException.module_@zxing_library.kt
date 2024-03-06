@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("WriterException")
 open external class WriterException : Exception {
     companion object {
         var kind: String

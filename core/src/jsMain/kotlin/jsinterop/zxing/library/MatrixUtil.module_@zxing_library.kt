@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("MatrixUtil")
 open external class MatrixUtil {
     companion object {
         var POSITION_DETECTION_PATTERN: Any

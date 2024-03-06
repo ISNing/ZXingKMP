@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("ExpandedPair")
 open external class ExpandedPair(
     leftChar: DataCharacter,
     rightChar: DataCharacter,

@@ -9,7 +9,7 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
-@JsName("default")
+@JsName("ArgumentException")
 open external class ArgumentException : Exception {
     companion object {
         var kind: String
