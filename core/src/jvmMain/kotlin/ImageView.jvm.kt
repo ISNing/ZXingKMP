@@ -204,21 +204,14 @@ class LuminanceSourceImpl : LuminanceSource {
     }
 
     override fun getRow(y: Int, row: ByteArray?): ByteArray {
-        var res: ByteArray? = row ?: ByteArray(width)
         require(!(y < 0 || y >= height)) { "Requested row is outside the image: $y" }
-        val width = width
-        if (res == null || res.size < width) {
-            res = ByteArray(width)
-        }
+        val res: ByteArray = if (row == null || row.size < width) ByteArray(width) else row
         val offset = (y + top) * dataWidth + left
         System.arraycopy(luminances, offset, res, 0, width)
         return res
     }
 
     override fun getMatrix(): ByteArray {
-        val width = width
-        val height = height
-
         // If the caller asks for the entire underlying image, save the copy and give them the
         // original data. The docs specifically warn that result.length must be ignored.
         if (width == dataWidth && height == dataHeight) {
