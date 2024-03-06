@@ -46,7 +46,12 @@ kotlin {
     }
 
     js {
-        browser()
+        browser {
+            testTask {
+                useMocha()
+            }
+        }
+        nodejs()
     }
 
 //    @OptIn(org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl::class)
