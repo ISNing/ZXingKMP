@@ -28,14 +28,14 @@ open external class Result(
     open var resultPoints: Any
     open var format: Any
     open var timestamp: Any
-    open var resultMetadata: Any
+    open var resultMetadata: Any?
     open fun getText(): String
     open fun getRawBytes(): Uint8Array
     open fun getNumBits(): Number
     open fun getResultPoints(): Array<ResultPoint>
     open fun getBarcodeFormat(): BarcodeFormat
     @OptIn(ExperimentalJsCollectionsApi::class)
-    open fun getResultMetadata(): JsReadonlyMap<ResultMetadataType, Any>
+    open fun getResultMetadata(): JsReadonlyMap<ResultMetadataType, Any>?
     open fun putMetadata(type: ResultMetadataType, value: Any)
     @OptIn(ExperimentalJsCollectionsApi::class)
     open fun putAllMetadata(metadata: JsReadonlyMap<ResultMetadataType, Any>)
