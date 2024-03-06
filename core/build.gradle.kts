@@ -75,6 +75,9 @@ kotlin {
         jsMain.dependencies {
             implementation(npm("@zxing/library", libs.versions.zxing.js.get()))
         }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+        }
     }
 }
 
