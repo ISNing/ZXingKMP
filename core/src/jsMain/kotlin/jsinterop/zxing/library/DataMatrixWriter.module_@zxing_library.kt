@@ -9,14 +9,17 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 @JsName("DataMatrixWriter")
 open external class DataMatrixWriter : Writer {
+    @OptIn(ExperimentalJsCollectionsApi::class)
     override fun encode(
         contents: String,
         format: BarcodeFormat,
         width: Number,
         height: Number,
-        hints: Map<EncodeHintType, Any>/* = definedExternally */
+        hints: JsReadonlyMap<EncodeHintType, Any>/* = definedExternally */
     ): BitMatrix
 
     open var encodeLowLevel: Any

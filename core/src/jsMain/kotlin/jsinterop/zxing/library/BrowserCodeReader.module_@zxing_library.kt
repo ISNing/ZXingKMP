@@ -16,6 +16,7 @@ import org.w3c.dom.mediacapture.MediaDeviceInfo
 import org.w3c.dom.mediacapture.MediaStream
 import org.w3c.dom.mediacapture.MediaStreamConstraints
 import kotlin.js.Promise
+import kotlin.js.collections.JsReadonlyMap
 
 external interface `T$0` {
     var sx: Number
@@ -28,14 +29,15 @@ external interface `T$0` {
     var dHeight: Number
 }
 
+@OptIn(ExperimentalJsCollectionsApi::class)
 open external class BrowserCodeReader(
     reader: Reader,
     timeBetweenScansMillis: Number = definedExternally,
-    _hints: Map<DecodeHintType, Any> = definedExternally
+    _hints: JsReadonlyMap<DecodeHintType, Any> = definedExternally
 ) {
     open var reader: Any
     open var timeBetweenScansMillis: Number
-    open var _hints: Map<DecodeHintType, Any>
+    open var _hints: JsReadonlyMap<DecodeHintType, Any>
     open var _stopContinuousDecode: Any
     open var _stopAsyncDecode: Any
     open var _timeBetweenDecodingAttempts: Number

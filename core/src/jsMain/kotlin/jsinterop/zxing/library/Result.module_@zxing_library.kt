@@ -10,6 +10,7 @@
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
+import kotlin.js.collections.JsReadonlyMap
 
 
 @JsName("Result")
@@ -33,9 +34,11 @@ open external class Result(
     open fun getNumBits(): Number
     open fun getResultPoints(): Array<ResultPoint>
     open fun getBarcodeFormat(): BarcodeFormat
-    open fun getResultMetadata(): Map<ResultMetadataType, Any>
+    @OptIn(ExperimentalJsCollectionsApi::class)
+    open fun getResultMetadata(): JsReadonlyMap<ResultMetadataType, Any>
     open fun putMetadata(type: ResultMetadataType, value: Any)
-    open fun putAllMetadata(metadata: Map<ResultMetadataType, Any>)
+    @OptIn(ExperimentalJsCollectionsApi::class)
+    open fun putAllMetadata(metadata: JsReadonlyMap<ResultMetadataType, Any>)
     open fun addResultPoints(newPoints: Array<ResultPoint>)
     open fun getTimestamp(): Number
     override fun toString(): String

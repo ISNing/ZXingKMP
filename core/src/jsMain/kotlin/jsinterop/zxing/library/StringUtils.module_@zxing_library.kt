@@ -10,6 +10,7 @@
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
+import kotlin.js.collections.JsReadonlyMap
 
 @JsName("StringUtils")
 open external class StringUtils {
@@ -22,7 +23,8 @@ open external class StringUtils {
         var PLATFORM_DEFAULT_ENCODING: Any
         var ASSUME_SHIFT_JIS: Any
         fun castAsNonUtf8Char(code: Number, encoding: Charset = definedExternally): String
-        fun guessEncoding(bytes: Uint8Array, hints: Map<DecodeHintType, Any>): String
+        @OptIn(ExperimentalJsCollectionsApi::class)
+        fun guessEncoding(bytes: Uint8Array, hints: JsReadonlyMap<DecodeHintType, Any>): String
         fun format(append: String, vararg args: Any): String
         fun getBytes(str: String, encoding: CharacterSetECI): Uint8Array
         fun getCharCode(str: String, index: Number = definedExternally): int

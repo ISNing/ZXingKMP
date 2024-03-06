@@ -9,13 +9,15 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.svg.SVGSVGElement
+import kotlin.js.collections.JsReadonlyMap
 
 open external class BrowserQRCodeSvgWriter {
+    @OptIn(ExperimentalJsCollectionsApi::class)
     open fun write(
         contents: String,
         width: Number,
         height: Number,
-        hints: Map<EncodeHintType, Any> = definedExternally
+        hints: JsReadonlyMap<EncodeHintType, Any> = definedExternally
     ): SVGSVGElement
 
     open fun writeToDom(
@@ -23,7 +25,7 @@ open external class BrowserQRCodeSvgWriter {
         contents: String,
         width: Number,
         height: Number,
-        hints: Map<EncodeHintType, Any> = definedExternally
+        hints: JsReadonlyMap<EncodeHintType, Any> = definedExternally
     )
 
     open fun writeToDom(containerElement: String, contents: String, width: Number, height: Number)
@@ -32,7 +34,7 @@ open external class BrowserQRCodeSvgWriter {
         contents: String,
         width: Number,
         height: Number,
-        hints: Map<EncodeHintType, Any> = definedExternally
+        hints: JsReadonlyMap<EncodeHintType, Any> = definedExternally
     )
 
     open fun writeToDom(containerElement: HTMLElement, contents: String, width: Number, height: Number)

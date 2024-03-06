@@ -10,17 +10,19 @@
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Uint8Array
+import kotlin.js.collections.JsReadonlyMap
 
 @JsName("DecodedBitStreamParser")
 open external class DecodedBitStreamParser {
     companion object {
         var ALPHANUMERIC_CHARS: Any
         var GB2312_SUBSET: Any
+        @OptIn(ExperimentalJsCollectionsApi::class)
         fun decode(
             bytes: Uint8Array,
             version: Version,
             ecLevel: ErrorCorrectionLevel,
-            hints: Map<DecodeHintType, Any>
+            hints: JsReadonlyMap<DecodeHintType, Any>
         ): DecoderResult
 
         var decodeHanziSegment: Any

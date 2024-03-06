@@ -9,14 +9,18 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 @JsName("PDF417Reader")
 open external class PDF417Reader : Reader,
     MultipleBarcodeReader {
-    override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any?>/* = definedExternally */): Result
+    @OptIn(ExperimentalJsCollectionsApi::class)
+    override fun decode(image: BinaryBitmap, hints: JsReadonlyMap<DecodeHintType, Any?>/* = definedExternally */): Result
     override fun decodeMultiple(image: BinaryBitmap): Array<Result>
+    @OptIn(ExperimentalJsCollectionsApi::class)
     override fun decodeMultiple(
         image: BinaryBitmap,
-        hints: Map<DecodeHintType, Any>/* = definedExternally */
+        hints: JsReadonlyMap<DecodeHintType, Any>/* = definedExternally */
     ): Array<Result>
 
     override fun reset()

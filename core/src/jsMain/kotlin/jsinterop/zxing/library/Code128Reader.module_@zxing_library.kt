@@ -9,12 +9,15 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 @JsName("Code128Reader")
 open external class Code128Reader : OneDReader {
+    @OptIn(ExperimentalJsCollectionsApi::class)
     override fun decodeRow(
         rowNumber: Number,
         row: BitArray,
-        hints: Map<DecodeHintType, Any>/* = definedExternally */
+        hints: JsReadonlyMap<DecodeHintType, Any>/* = definedExternally */
     ): Result
 
     companion object {

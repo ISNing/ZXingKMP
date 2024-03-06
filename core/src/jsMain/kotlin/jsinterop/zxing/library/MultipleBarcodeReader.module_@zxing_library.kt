@@ -7,7 +7,10 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 external interface MultipleBarcodeReader {
     fun decodeMultiple(image: BinaryBitmap): Array<Result>
-    fun decodeMultiple(image: BinaryBitmap, hints: Map<DecodeHintType, Any>): Array<Result>
+    @OptIn(ExperimentalJsCollectionsApi::class)
+    fun decodeMultiple(image: BinaryBitmap, hints: JsReadonlyMap<DecodeHintType, Any>): Array<Result>
 }

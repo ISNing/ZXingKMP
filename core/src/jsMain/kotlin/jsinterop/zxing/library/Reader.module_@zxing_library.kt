@@ -7,7 +7,10 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 external interface Reader {
-    fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any?> = definedExternally): Result
+    @OptIn(ExperimentalJsCollectionsApi::class)
+    fun decode(image: BinaryBitmap, hints: JsReadonlyMap<DecodeHintType, Any?> = definedExternally): Result
     fun reset()
 }

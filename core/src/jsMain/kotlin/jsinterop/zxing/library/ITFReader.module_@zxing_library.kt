@@ -9,13 +9,15 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 @JsName("ITFReader")
 open external class ITFReader : OneDReader {
     open var narrowLineWidth: Any
     override fun decodeRow(
         rowNumber: Number,
         row: BitArray,
-        hints: Map<DecodeHintType, Any>/* = definedExternally */
+        hints: JsReadonlyMap<DecodeHintType, Any>/* = definedExternally */
     ): Result
 
     open var decodeStart: Any

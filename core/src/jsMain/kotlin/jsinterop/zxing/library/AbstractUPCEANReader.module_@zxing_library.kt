@@ -10,14 +10,16 @@
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Int32Array
+import kotlin.js.collections.JsReadonlyMap
 
 @JsName("default")
 abstract external class AbstractUPCEANReader : OneDReader {
     open var decodeRowStringBuffer: String
+    @OptIn(ExperimentalJsCollectionsApi::class)
     override fun decodeRow(
         rowNumber: Number,
         row: BitArray,
-        hints: Map<DecodeHintType, Any>/* = definedExternally */
+        hints: JsReadonlyMap<DecodeHintType, Any>/* = definedExternally */
     ): Result
 
     open fun getBarcodeFormat(): Any

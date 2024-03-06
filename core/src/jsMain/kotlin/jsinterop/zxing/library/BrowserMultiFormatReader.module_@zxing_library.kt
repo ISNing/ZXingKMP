@@ -7,9 +7,12 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
 
+
+@OptIn(ExperimentalJsCollectionsApi::class)
 open external class BrowserMultiFormatReader(
-    hints: Map<DecodeHintType, Any> = definedExternally,
+    hints: JsReadonlyMap<DecodeHintType, Any> = definedExternally,
     timeBetweenScansMillis: Number = definedExternally
 ) :
     BrowserCodeReader {

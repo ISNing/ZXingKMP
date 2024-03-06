@@ -7,8 +7,11 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
+@OptIn(ExperimentalJsCollectionsApi::class)
 open external class BrowserBarcodeReader(
     timeBetweenScansMillis: Number = definedExternally,
-    hints: Map<DecodeHintType, Any> = definedExternally
+    hints: JsReadonlyMap<DecodeHintType, Any> = definedExternally
 ) :
     BrowserCodeReader

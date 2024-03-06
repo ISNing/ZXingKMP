@@ -10,13 +10,15 @@
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
 import org.khronos.webgl.Int32Array
+import kotlin.js.collections.JsReadonlyMap
 
 @JsName("UPCEANReader")
 open external class UPCEANReader : AbstractUPCEANReader {
+    @OptIn(ExperimentalJsCollectionsApi::class)
     override fun decodeRow(
         rowNumber: Number,
         row: BitArray,
-        hints: Map<DecodeHintType, Any>/* = definedExternally */
+        hints: JsReadonlyMap<DecodeHintType, Any>/* = definedExternally */
     ): Result
 
     companion object {

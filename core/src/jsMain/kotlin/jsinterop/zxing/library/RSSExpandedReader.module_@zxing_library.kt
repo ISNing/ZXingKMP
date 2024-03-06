@@ -9,13 +9,16 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 @JsName("RSSExpandedReader")
 open external class RSSExpandedReader : AbstractRSSReader {
     open var pairs: Any
     open var rows: Any
     open var startEnd: Any
     open var startFromEven: Any
-    override fun decodeRow(rowNumber: Number, row: BitArray, hints: Map<DecodeHintType, Any>): Result
+    @OptIn(ExperimentalJsCollectionsApi::class)
+    override fun decodeRow(rowNumber: Number, row: BitArray, hints: JsReadonlyMap<DecodeHintType, Any>): Result
     override fun reset()
     open fun decodeRow2pairs(rowNumber: Number, row: BitArray): Array<ExpandedPair>
     open var checkRowsBoolean: Any

@@ -9,6 +9,8 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 external enum class DataMaskValues {
     DATA_MASK_000 /* = 0 */,
     DATA_MASK_001 /* = 1 */,
@@ -27,6 +29,7 @@ open external class DataMask(value: DataMaskValues, isMasked: (i: Number, j: Num
     open fun unmaskBitMatrix(bits: BitMatrix, dimension: Number)
 
     companion object {
-        var values: Map<DataMaskValues, DataMask>
+        @OptIn(ExperimentalJsCollectionsApi::class)
+        var values: JsReadonlyMap<DataMaskValues, DataMask>
     }
 }

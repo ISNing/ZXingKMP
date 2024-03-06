@@ -9,11 +9,14 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 @JsName("QRCodeReader")
 open external class QRCodeReader : Reader {
     open var decoder: Any
     open fun getDecoder(): Decoder
-    override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any?>/* = definedExternally */): Result
+    @OptIn(ExperimentalJsCollectionsApi::class)
+    override fun decode(image: BinaryBitmap, hints: JsReadonlyMap<DecodeHintType, Any?>/* = definedExternally */): Result
     override fun reset()
 
     companion object {

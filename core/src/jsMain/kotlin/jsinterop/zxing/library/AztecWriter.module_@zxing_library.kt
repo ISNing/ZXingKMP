@@ -14,7 +14,8 @@ package cn.isning.zxingkmp.jsinterop.zxing.library
 //@JsName("default")
 //open external class AztecWriter : Writer {
 //    open fun encode(contents: String, format: BarcodeFormat, width: int, height: int): BitMatrix
-//    open fun encodeWithHints(contents: String, format: BarcodeFormat, width: int, height: int, hints: Map<EncodeHintType, Any>): BitMatrix
+//    @OptIn(ExperimentalJsCollectionsApi::class)
+//    open fun encodeWithHints(contents: String, format: BarcodeFormat, width: int, height: int, hints: JsReadonlyMap<EncodeHintType, Any>): BitMatrix
 //
 //    companion object {
 //        var encodeLayers: Any

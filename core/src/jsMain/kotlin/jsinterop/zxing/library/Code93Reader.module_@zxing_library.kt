@@ -9,14 +9,17 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 @JsName("Code93Reader")
 open external class Code93Reader : OneDReader {
     open var decodeRowResult: Any
     open var counters: Any
+    @OptIn(ExperimentalJsCollectionsApi::class)
     override fun decodeRow(
         rowNumber: Number,
         row: BitArray,
-        hints: Map<DecodeHintType, Any>/* = definedExternally */
+        hints: JsReadonlyMap<DecodeHintType, Any>/* = definedExternally */
     ): Result
 
     open var findAsteriskPattern: Any

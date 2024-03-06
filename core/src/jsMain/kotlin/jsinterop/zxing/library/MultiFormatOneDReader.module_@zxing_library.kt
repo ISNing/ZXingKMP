@@ -9,10 +9,13 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
+@OptIn(ExperimentalJsCollectionsApi::class)
 @JsName("MultiFormatOneDReader")
-open external class MultiFormatOneDReader(hints: Map<DecodeHintType, Any> = definedExternally) :
+open external class MultiFormatOneDReader(hints: JsReadonlyMap<DecodeHintType, Any> = definedExternally) :
     OneDReader {
     open var readers: Any
-    override fun decodeRow(rowNumber: Number, row: BitArray, hints: Map<DecodeHintType, Any>): Result
+    override fun decodeRow(rowNumber: Number, row: BitArray, hints: JsReadonlyMap<DecodeHintType, Any>): Result
     override fun reset()
 }

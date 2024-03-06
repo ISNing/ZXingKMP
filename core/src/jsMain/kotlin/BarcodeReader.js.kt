@@ -21,8 +21,9 @@ import cn.isning.zxingkmp.jsinterop.zxing.library.MultiFormatReader
 import cn.isning.zxingkmp.jsinterop.zxing.library.NotFoundException
 import kotlin.properties.Delegates
 
+@OptIn(ExperimentalJsExport::class, ExperimentalJsCollectionsApi::class)
 actual class BarcodeReader actual constructor(private val options: ReaderOptions) {
-    private val reader = MultiFormatReader().also { it.setHints(options.asHints) }
+    private val reader = MultiFormatReader().also { it.setHints(options.asHints.asJsReadonlyMapView()) }
 
     // TODO: Currently zxing only supports one barcode per image: https://github.com/ISNing/ZXingKMP/issues/7
     actual fun read(imageView: ImageView): List<Barcode> = try {

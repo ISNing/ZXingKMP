@@ -9,13 +9,17 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 @JsName("MultiFormatReader")
 open external class MultiFormatReader : Reader {
     open var hints: Any
     open var readers: Any
-    override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any?>/* = definedExternally */): Result
+    @OptIn(ExperimentalJsCollectionsApi::class)
+    override fun decode(image: BinaryBitmap, hints: JsReadonlyMap<DecodeHintType, Any?>/* = definedExternally */): Result
     open fun decodeWithState(image: BinaryBitmap): Result
-    open fun setHints(hints: Map<DecodeHintType, Any?> = definedExternally)
+    @OptIn(ExperimentalJsCollectionsApi::class)
+    open fun setHints(hints: JsReadonlyMap<DecodeHintType, Any?> = definedExternally)
     override fun reset()
     open var decodeInternal: Any
 }

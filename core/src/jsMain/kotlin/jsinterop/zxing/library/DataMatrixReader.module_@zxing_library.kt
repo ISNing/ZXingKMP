@@ -9,10 +9,13 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 @JsName("DataMatrixReader")
 open external class DataMatrixReader : Reader {
     open var decoder: Any
-    override fun decode(image: BinaryBitmap, hints: Map<DecodeHintType, Any?>/* = definedExternally */): Result
+    @OptIn(ExperimentalJsCollectionsApi::class)
+    override fun decode(image: BinaryBitmap, hints: JsReadonlyMap<DecodeHintType, Any?>/* = definedExternally */): Result
     override fun reset()
 
     companion object {

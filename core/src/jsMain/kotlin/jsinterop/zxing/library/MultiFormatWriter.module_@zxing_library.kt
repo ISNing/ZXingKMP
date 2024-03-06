@@ -9,13 +9,16 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 @JsName("MultiFormatWriter")
 open external class MultiFormatWriter : Writer {
+    @OptIn(ExperimentalJsCollectionsApi::class)
     override fun encode(
         contents: String,
         format: BarcodeFormat,
         width: Number,
         height: Number,
-        hints: Map<EncodeHintType, Any>
+        hints: JsReadonlyMap<EncodeHintType, Any>
     ): BitMatrix
 }

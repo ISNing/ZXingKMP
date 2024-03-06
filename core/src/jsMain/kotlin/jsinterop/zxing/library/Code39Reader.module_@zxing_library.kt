@@ -9,6 +9,8 @@
 
 package cn.isning.zxingkmp.jsinterop.zxing.library
 
+import kotlin.js.collections.JsReadonlyMap
+
 @JsName("Code39Reader")
 open external class Code39Reader(
     usingCheckDigit: Boolean = definedExternally,
@@ -19,10 +21,11 @@ open external class Code39Reader(
     open var extendedMode: Any
     open var decodeRowResult: Any
     open var counters: Any
+    @OptIn(ExperimentalJsCollectionsApi::class)
     override fun decodeRow(
         rowNumber: Number,
         row: BitArray,
-        hints: Map<DecodeHintType, Any>/* = definedExternally */
+        hints: JsReadonlyMap<DecodeHintType, Any>/* = definedExternally */
     ): Result
 
     companion object {
